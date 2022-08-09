@@ -1,10 +1,11 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect, useContext } from 'react'
 import { ScrollView, Text, View } from "react-native"
 import { Card, Button } from 'react-native-elements'
 import { GiftedChat, Bubble } from 'react-native-gifted-chat'
 import { Dialogflow_V2 } from 'react-native-dialogflow'
 import { dialogflowConfig } from '../env'
 import firestore from "@react-native-firebase/firestore"
+import { AuthenticationContext } from "../context/authentication.context"
 
 const botAvatar = require('../assets/images/mascot.png')
 
@@ -14,10 +15,11 @@ const BOT = {
     avatar: botAvatar
 }
 
-const ChatbotScreen = ({ route, navigation }) => {
+const ChatbotScreen = ({ navigation }) => {
+    const { user, signOut } = useContext(AuthenticationContext);
     const [messages, setMessages] = useState([]);
-    const [name, setName] = useState(route.params.name)
-    const [id, setId] = useState(route.params.id)
+    const [name, setName] = useState(user.displayName)
+    const [id, setId] = useState(user.uid)
 
     useEffect(() => {
         // setMessages(
@@ -80,7 +82,7 @@ const ChatbotScreen = ({ route, navigation }) => {
                         user: BOT
                     }, {
                         _id: 1,
-                        text: `Hello, ${route.params.name}. My name is Mr. Bot`,
+                        text: `Hello, ${name}. My name is Mr. Bot`,
                         createdAt: new Date().getTime(),
                         user: BOT
                     }]
@@ -94,7 +96,7 @@ const ChatbotScreen = ({ route, navigation }) => {
     const onSend = (messages = []) => {
         setMessages(oldArray => [messages[0], ...oldArray])
         let text = messages[0].text
-        const { id, name } = route.params
+
         firestore().collection('CHATBOT_HISTORY')
             .doc(id)
             .collection('MESSAGES')
@@ -123,8 +125,8 @@ const ChatbotScreen = ({ route, navigation }) => {
         let msg;
         if (text === 'therapy') {
             msg = {
-                text: "I am there for you\n Its okay",
-                //        image: 'https://cdn.britannica.com/69/155469-131-14083F59/airplane-flight.jpg',
+                text: "Can i suggest you something",
+                image: 'https://cdn.britannica.com/69/155469-131-14083F59/airplane-flight.jpg',
                 createdAt: new Date().getTime(),
                 user: BOT
             }
@@ -231,6 +233,7 @@ const ChatbotScreen = ({ route, navigation }) => {
             <Bubble {...props} textStyle={{ right: { color: 'white' } }} wrapperStyle={{ left: { backgroundColor: "yellow" }, right: { backgroundColor: 'pink' } }} />
         )
     }
+
     return (
         <GiftedChat
             messages={messages}

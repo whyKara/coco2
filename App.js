@@ -1,21 +1,33 @@
+import 'react-native-gesture-handler';
 import React from 'react'
-import { View, Text, SafeAreaView } from 'react-native'
-import LoginScreen from './app/screens/Login'
-import ChatbotScreen from './app/screens/Chatbot'
+import { SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import LoginScreen from './app/screens/Login'
+import ChatbotScreen from './app/screens/Chatbot'
+import AnonymousVoiceTherapy from './app/screens/AnonymousVoiceTherapy';
+import Blog from './app/screens/Blog';
+import Community from './app/screens/Community';
+import Journal from './app/screens/Journal';
+import MeditationMusic from './app/screens/MeditationMusic';
+import MoodTracker from './app/screens/MoodTracker';
+import AvailableTherapist from './app/screens/AvailableTherapist';
+import Dashboard from './app/screens/Dashboard';
+
+import Navigator from "./app/navigation/index"
+import {
+  AuthenticationContext,
+  AuthenticationContextProvider
+} from "./app/context/authentication.context";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Login' }}
-          />
-          <Stack.Screen name="ChatbotScreen" component={ChatbotScreen} options={{ title: 'Chat Room' }} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <AuthenticationContextProvider>
+        <Navigator />
+      </AuthenticationContextProvider>
     </SafeAreaView>
   )
 }
