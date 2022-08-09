@@ -116,6 +116,7 @@ const ChatbotScreen = ({ navigation }) => {
     }
 
     const handleGoogleResponse = (result) => {
+        console.log(result)
         let text = result.queryResult.fulfillmentMessages[0]
         text = text.text.text[0]
         sendBotResponse(text)
