@@ -11,6 +11,17 @@ import MeditationMusic from '../screens/MeditationMusic';
 import MoodTracker from '../screens/MoodTracker';
 import AvailableTherapist from '../screens/AvailableTherapist';
 
+import { Music } from '../screens/Music';
+
+import { GettingStarted } from '../screens/GettingStarted';
+import { ChooseTopic } from '../screens/ChooseTopic';
+import { Reminders } from '../screens/Reminders';
+import { Home } from '../screens/Home';
+import { CourseDetails } from '../screens/CourseDetails';
+import { Meditate } from '../screens/Meditate';
+import Questions from "../screens/Questions";
+import MusicDemo from "../screens/MusicDemo";
+
 const SettingsStack = createStackNavigator();
 
 export const SettingsNavigator = () => {
@@ -35,6 +46,15 @@ export const SettingsNavigator = () => {
             <SettingsStack.Screen name="MeditationMusic" component={MeditationMusic} options={{ title: 'MeditationMusic' }} />
             <SettingsStack.Screen name="MoodTracker" component={MoodTracker} options={{ title: 'MoodTracker' }} />
             <SettingsStack.Screen name="AvailableTherapist" component={AvailableTherapist} options={{ title: 'AvailableTherapist' }} />
+            <SettingsStack.Screen name="Questions" component={Questions} options={{ title: 'Questions' }} />
+            <SettingsStack.Screen name="Music" component={Music} options={{ title: 'Music' }} />
+            <SettingsStack.Screen name="GettingStarted" component={GettingStarted} options={{ title: 'GettingStarted' }} />
+            <SettingsStack.Screen name="ChooseTopic" component={ChooseTopic} options={{ title: 'ChooseTopic' }} />
+            <SettingsStack.Screen name="Reminders" component={Reminders} options={{ title: 'Reminders' }} />
+            <SettingsStack.Screen name="Home" component={Home} options={{ title: 'Home' }} />
+            <SettingsStack.Screen name="CourseDetails" component={CourseDetails} options={{ title: 'CourseDetails' }} />
+            <SettingsStack.Screen name="Meditate" component={Meditate} options={{ title: 'Meditate' }} />
+            <SettingsStack.Screen name="MusicDemo" component={MusicDemo} options={{ title: 'MusicDemo' }} />
         </SettingsStack.Navigator>
     );
 };

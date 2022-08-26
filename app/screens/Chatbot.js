@@ -18,8 +18,8 @@ const BOT = {
 const ChatbotScreen = ({ navigation }) => {
     const { user, signOut } = useContext(AuthenticationContext);
     const [messages, setMessages] = useState([]);
-    const [name, setName] = useState(user.displayName)
-    const [id, setId] = useState(user.uid)
+    const [name, setName] = useState(user ? user.displayName : 'User')
+    const [id, setId] = useState(user.uid ? user.uid : "1")
 
     useEffect(() => {
         // setMessages(
@@ -231,7 +231,7 @@ const ChatbotScreen = ({ navigation }) => {
             )
         }
         return (
-            <Bubble {...props} textStyle={{ right: { color: 'white' } }} wrapperStyle={{ left: { backgroundColor: "yellow" }, right: { backgroundColor: 'pink' } }} />
+            <Bubble {...props} wrapperStyle={{ left: { backgroundColor: "lightblue" } }} />
         )
     }
 

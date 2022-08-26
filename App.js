@@ -1,4 +1,3 @@
-import 'react-native-gesture-handler';
 import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
@@ -14,14 +13,18 @@ import MeditationMusic from './app/screens/MeditationMusic';
 import MoodTracker from './app/screens/MoodTracker';
 import AvailableTherapist from './app/screens/AvailableTherapist';
 import Dashboard from './app/screens/Dashboard';
-
 import Navigator from "./app/navigation/index"
 import {
   AuthenticationContext,
   AuthenticationContextProvider
 } from "./app/context/authentication.context";
-const Stack = createNativeStackNavigator();
+import { LogBox } from 'react-native';
 
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
+]);
+
+const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>

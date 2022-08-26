@@ -8,6 +8,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [user, setUser] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+
     useEffect(() => {
         GoogleSignin.configure({
             scopes: ['email'],
