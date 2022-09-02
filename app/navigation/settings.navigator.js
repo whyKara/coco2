@@ -21,6 +21,8 @@ import { CourseDetails } from '../screens/CourseDetails';
 import { Meditate } from '../screens/Meditate';
 import Questions from "../screens/Questions";
 import MusicDemo from "../screens/MusicDemo";
+import ChatbotDemo from "../screens/ChatbotDemo";
+import UpdateDetails from "../screens/UpdateDetails";
 
 const SettingsStack = createStackNavigator();
 
@@ -55,6 +57,8 @@ export const SettingsNavigator = () => {
             <SettingsStack.Screen name="CourseDetails" component={CourseDetails} options={{ title: 'CourseDetails' }} />
             <SettingsStack.Screen name="Meditate" component={Meditate} options={{ title: 'Meditate' }} />
             <SettingsStack.Screen name="MusicDemo" component={MusicDemo} options={{ title: 'MusicDemo' }} />
+            <SettingsStack.Screen name="ChatbotDemo" component={ChatbotDemo} options={{ title: 'ChatbotDemo' }} />
+            <SettingsStack.Screen name="UpdateDetails" component={UpdateDetails} options={{ title: 'UpdateDetails' }} />
         </SettingsStack.Navigator>
     );
 };
